@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include the jQuery Mobile library -->
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7GSfR1YaL6Ar9UDD1l-u445BwF69hDYY&libraries=places&loading=async&callback=initGoogleMaps"
+        async defer></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>TravelSekai</title>
+</head>
+
+<body>
+    <!-- Home Page -->
+    <div data-role="page" id="home">
+        <div data-role="header">
+            <h1>Home Feed</h1>
+        </div>
+        <div data-role="main">
+            <ul data-role="listview" data-inset="true" data-filter="true" data-input="#filter-for-listview">
+                <li class="post-item">
+                    <div class="user-account">
+                        <img src="images/cloud.webp" class="profile-img" alt="Profile">
+                        <h3 class="ui-bar">Cloud Strife</h3>
+                    </div>
+                    <div class="image-container ui-body">
+                        <img src="images/gongaga.jpg" class="responsive-img" alt="Post image">
+                    </div>
+                    <div class="icon-alignment">
+                        <a href="#" data-role="button" data-icon="heart" data-iconpos="notext" class="ui-mini">Like</a>
+                        <a href="#" data-role="button" data-icon="comment" data-iconpos="notext"
+                            class="ui-mini">Comment</a>
+                        <a href="#" data-role="button" data-icon="action" data-iconpos="notext" class="ui-mini"
+                            title="View Full Post">Action</a>
+                    </div>
+                    <div class="ui-bar text-wrap">
+                        The Gongaga Region has a lush wildlife and the main village is filled with fun activities.
+                    </div>
+
+                </li>
+                <li class="post-item">
+                    <div class="user-account">
+                        <img src="images/tifa-hr.jpg" class="profile-img" alt="Profile">
+                        <h3 class="ui-bar">Tifa Lockheart</h3>
+                    </div>
+                    <div class="image-container ui-body">
+                        <img src="images/g-saucer.jpg" class="responsive-img" alt="Post image">
+                    </div>
+                    <div class="icon-alignment">
+                        <a href="#" data-role="button" data-icon="heart" data-iconpos="notext" class="ui-mini">Like</a>
+                        <a href="#" data-role="button" data-icon="comment" data-iconpos="notext"
+                            class="ui-mini">Comment</a>
+                        <a href="#" data-role="button" data-icon="action" data-iconpos="notext" class="ui-mini"
+                            title="View Full Post">Action</a>
+                    </div>
+                    <div class="ui-bar text-wrap">
+                        The Golden Saucer has a variety of fun activities and you can lose a lot of money playing those
+                        gambling games.
+                    </div>
+                </li>
+                <li class="post-item">
+                    <div class="user-account">
+                        <img src="images/aerith.webp" class="profile-img" alt="Profile">
+                        <h3 class="ui-bar">Aerith Gainsborough</h3>
+                    </div>
+                    <div class="image-container ui-body">
+                        <img src="images/grasslands.webp" class="responsive-img" alt="Post image">
+                    </div>
+                    <div class="icon-alignment">
+                        <a href="#" data-role="button" data-icon="heart" data-iconpos="notext" class="ui-mini">Like</a>
+                        <a href="#" data-role="button" data-icon="comment" data-iconpos="notext"
+                            class="ui-mini">Comment</a>
+                        <a href="#" data-role="button" data-icon="action" data-iconpos="notext" class="ui-mini"
+                            title="View Full Post">Action</a>
+                    </div>
+                    <div class="ui-bar text-wrap">
+                        The Grasslands are a beautiful place to visit anytime of the year.
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div data-role="footer" data-position="fixed" class="footer-center" data-tap-toggle="false">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" class="ui-btn-active ui-state-persist" data-icon="home">Home</a></li>
+                    <li><a href="#addJourneyPage" data-icon="location">Add Journey</a></li>
+                    <li><a href="#" data-icon="shop">Shop</a></li>
+                    <li><a href="#" data-icon="tag">Deals</a></li>
+                    <li><a href="#accountPage" data-icon="user">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Journey Page-->
+    <div data-role="page" id="addJourneyPage">
+        <div data-role="header">
+            <h1>Add Journey</h1>
+        </div>
+
+        <div data-role="main">
+            <form action="" id="journeyForm">
+                <input type="text" id="journey-title" name="journey-title" placeholder="Enter a title">
+                <div id="locationList">
+                    <div class="journey-segment">
+                        <!-- Initial Location Field-->
+                        <div class="location-entry">
+                            <div class="location-number">1</div>
+                            <input type="text" name="locations[]" class="location-input"
+                                placeholder="Enter location name">
+                            <textarea name="locationDescriptions[]" class="" placeholder="Add a description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" id="addLocationBtn" class="add-location-btn ui-btn ui-corner-all ui-btn-outlined">+ Add
+                    Location</a>
+                <div>
+                    <label for="accommodation">Accommodation:</label>
+                    <textarea name="accommodation" id="accommodation" class="accommodation-details"
+                        placeholder="Add accommodation details"></textarea>
+                </div>
+
+                <div class="trip-date-group">
+                    <label for="tripStart">Trip Start Date:</label>
+                    <input type="date" name="tripStart" id="tripStart">
+
+                    <label for="tripEnd">Trip End Date:</label>
+                    <input type="date" name="tripEnd" id="tripEnd">
+                </div>
+                <div class="journey-buttons">
+                    <input type="submit" value="Add Journey" class="ui-btn ui-btn-b submit-journey-btn">
+                    <input type="button" id="clearJourneyBtn" value="Clear Journey"
+                        class="ui-btn ui-btn-b submit-journey-btn">
+                </div>
+            </form>
+        </div>
+
+        <div data-role="footer" data-position="fixed" class="footer-center" data-tap-toggle="false">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#addJourneyPage" class="ui-btn-active ui-state-persist" data-icon="location">Add
+                            Journey</a></li>
+                    <li><a href="#" data-icon="shop">Shop</a></li>
+                    <li><a href="#" data-icon="tag">Deals</a></li>
+                    <li><a href="#accountPage" data-icon="user">Account</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="popup" data-role="popup" data-transition="fade" id="confirmClearPopup" class="ui-content"
+            style="max-width:300px;">
+            <h3>Clear Journey?</h3>
+            <p>This will remove all locations and reset the form.</p>
+            <a href="#" class="ui-btn ui-btn-b ui-corner-all" id="confirmClear">Yes, Clear</a>
+            <a href="#" class="ui-btn ui-corner-all" data-rel="back">Cancel</a>
+        </div>
+    </div>
+
+    <!-- Account Page -->
+    <div data-role="page" id="accountPage">
+        <div data-role="header">
+            <h1>My Account</h1>
+            <a href="#settingsPopup" data-rel="popup"
+                class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-gear">Settings</a>
+            <div data-role="popup" id="settingsPopup" data-theme="w">
+                <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                    <li data-role="list-divider">User Settings</li>
+                    <li><a href="#">Edit Account Information</a></li>
+                    <li><a href="#">Delete Posts</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div data-role="main">
+            <div class="profile-box">
+                <div class="profile-header">
+                    <img src="images/cloud.webp" alt="Profile Picture" class="profile-avatar">
+                    <div class="profile-details">
+                        <h3>Cloud Strife</h3>
+                        <p class="bio">Loves to explore old canyons and go hiking on mountains.<br>
+                            <strong>Companions:</strong> 75
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="travel-log">
+                <div class="ui-bar ui-bar-a">
+                    <h3>My Travel Log</h3>
+                </div>
+                <div class="image-container ui-body">
+                    <img src="images/grasslands.webp" class="responsive-img" alt="Post image">
+                </div>
+                <div class="icon-alignment">
+                    <a href="#" data-role="button" data-icon="heart" data-iconpos="notext" class="ui-mini">Like</a>
+                    <a href="#" data-role="button" data-icon="comment" data-iconpos="notext" class="ui-mini">Comment</a>
+                    <a href="#" data-role="button" data-icon="edit" data-iconpos="notext" class="ui-mini"
+                        title="View Full Post">Edit</a>
+                </div>
+                <div class="ui-bar text-wrap">
+                    The Grasslands are a beautiful place to visit anytime of the year.
+                </div>
+                <div class="image-container ui-body">
+                    <img src="images/costadelsol.jpg" class="responsive-img" alt="Post image">
+                </div>
+                <div class="icon-alignment">
+                    <a href="#" data-role="button" data-icon="heart" data-iconpos="notext" class="ui-mini">Like</a>
+                    <a href="#" data-role="button" data-icon="comment" data-iconpos="notext" class="ui-mini">Comment</a>
+                    <a href="#" data-role="button" data-icon="edit" data-iconpos="notext" class="ui-mini"
+                        title="View Full Post">Edit</a>
+                </div>
+                <div class="ui-bar text-wrap">
+                    Costa Del Sol was the perfect location to spend this summer's vacation.
+                </div>
+
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" class="footer-center" data-tap-toggle="false">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#home" data-icon="home">Home</a></li>
+                    <li><a href="#addJourneyPage" data-icon="location">Add Journey</a></li>
+                    <li><a href="#" data-icon="shop">Shop</a></li>
+                    <li><a href="#" data-icon="tag">Deals</a></li>
+                    <li><a href="#accountPage" class="ui-btn-active ui-state-persist" data-icon="user">Account</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
